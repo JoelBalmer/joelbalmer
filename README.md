@@ -1,3 +1,3 @@
 # The website of Joel Balmer!
 
-Welcome :)
+Welcome to me
