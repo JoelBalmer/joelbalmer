@@ -1,2 +1,3 @@
-# joelbalmer
-The website of Joel Balmer
+# The website of Joel Balmer!
+
+Welcome :)
