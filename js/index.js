@@ -35,10 +35,8 @@ var createScene = function(engine, canvas) {
     var faceColors = new Array(6);
     for (var i = 0; i < 6; i++) {
         faceUV[i] = new BABYLON.Vector4(i / columns, 0, (i + 1) / columns, 1 / rows);
+        faceColors[i] = new BABYLON.Color4(1, 1, 1, 1);
     }
-
-    //overwrite wanted face with sprite coordinates
-    //faceUV[1] = new BABYLON.Vector4(3 / columns, 0, (3 + 1) / columns, 1 / rows);
 
     var options = {
     	height: 0.5,
