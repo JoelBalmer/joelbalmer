@@ -51,6 +51,7 @@ var createScene = function(engine, canvas) {
 	var rows = 1;
 	var faceUV = new Array(6);
 	var faceColors = new Array(6);
+
 	for (var i = 0; i < 6; i++) {
 		faceUV[i] = new BABYLON.Vector4(
 			i / columns,
