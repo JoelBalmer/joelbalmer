@@ -41,10 +41,7 @@ var createScene = function(engine, canvas) {
 	);
 
 	var mat = new BABYLON.StandardMaterial("mat", scene);
-	var texture = new BABYLON.Texture(
-		"http://www.joelbalmermusic.co.uk/img/items2.png",
-		scene
-	);
+	var texture = new BABYLON.Texture("./img/items.png", scene);
 	mat.diffuseTexture = texture;
 
 	var columns = 3;
