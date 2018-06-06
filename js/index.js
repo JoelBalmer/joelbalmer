@@ -25,12 +25,31 @@ var createScene = function(engine, canvas) {
     var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
     var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
-    // This is where you create and manipulate meshes
-	var box = BABYLON.MeshBuilder.CreateBox("box", {
-		height: 0.5,
+    var mat = new BABYLON.StandardMaterial("mat", scene);
+	var texture = new BABYLON.Texture("http://www.joelbalmermusic.co.uk/img/items2.png", scene);
+	mat.diffuseTexture = texture;
+
+    var columns = 3;
+    var rows = 1;
+    var faceUV = new Array(6);
+    var faceColors = new Array(6);
+    for (var i = 0; i < 6; i++) {
+        faceUV[i] = new BABYLON.Vector4(i / columns, 0, (i + 1) / columns, 1 / rows);
+    }
+
+    //overwrite wanted face with sprite coordinates
+    //faceUV[1] = new BABYLON.Vector4(3 / columns, 0, (3 + 1) / columns, 1 / rows);
+
+    var options = {
+    	height: 0.5,
 		width: 0.5,
 		depth: 0.5,
-	}, scene);
+        faceUV: faceUV
+    };
+
+    // This is where you create and manipulate meshes
+	var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);	
+	box.material = mat;
 
     return scene;
 }
