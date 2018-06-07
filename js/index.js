@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", function() {
+	// setup the babylon.js scene
 	var canvas = document.getElementById("renderCanvas");
 	var engine = new BABYLON.Engine(canvas, true);
 	var scene = createScene(engine, canvas);
@@ -10,25 +11,37 @@ window.addEventListener("DOMContentLoaded", function() {
 	window.addEventListener("resize", function() {
 		engine.resize();
 	});
+
+	//When click event is raised, open link on click
+	window.addEventListener("click", function() {
+		var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+		var indices = pickResult.pickedMesh.getIndices();
+		var firstVertex = indices[pickResult.faceId * 3];
+
+		//16 top cv, 8 left github, 0 right music, 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
+		// switch (firstVertex) {
+		// 	case 16:
+		// }
+	});
 });
 
 var createScene = function(engine, canvas) {
-	// Create the scene space
+	// create the scene space
 	var scene = new BABYLON.Scene(engine);
 	scene.clearColor = new BABYLON.Color3(1, 1, 1);
 
-	// Add a camera to the scene and attach it to the canvas
+	// add a camera to the scene and attach it to the canvas
 	var camera = new BABYLON.ArcRotateCamera(
 		"Camera",
 		Math.PI / 4,
-		Math.PI / 4,
+		Math.PI / 3,
 		2,
 		BABYLON.Vector3.Zero(),
 		scene
 	);
 	camera.attachControl(canvas, true);
 
-	// Add lights to the scene
+	// add lights to the scene
 	var light1 = new BABYLON.HemisphericLight(
 		"light1",
 		new BABYLON.Vector3(1, 1, 0),
@@ -40,6 +53,7 @@ var createScene = function(engine, canvas) {
 		scene
 	);
 
+	// import texture atlas, sprite sheet
 	var mat = new BABYLON.StandardMaterial("mat", scene);
 	var texture = new BABYLON.Texture("./img/items.png", scene);
 	mat.diffuseTexture = texture;
@@ -56,19 +70,33 @@ var createScene = function(engine, canvas) {
 			(i + 1) / columns,
 			1 / rows
 		);
-		faceColors[i] = new BABYLON.Color4(1, 1, 1, 1);
 	}
 
 	var options = {
 		height: 0.5,
 		width: 0.5,
 		depth: 0.5,
-		faceUV: faceUV
+		faceUV: faceUV,
+		updatable: true
 	};
 
-	// This is where you create and manipulate meshes
+	// create the box and assign the material with textures to it
 	var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box.material = mat;
+
+	// assign the box the click actions
+	box.actionManager = new BABYLON.ActionManager(scene);
+	box.actionManager.registerAction(
+		new BABYLON.ExecuteCodeAction(
+			BABYLON.ActionManager.OnPickTrigger,
+			function(unit_mesh) {
+				console.log("Box clicked! " + unit_mesh.meshUnderPointer.name);
+				console.log(
+					"Box clicked! " + unit_mesh.meshUnderPointer.getIndices()
+				);
+			}
+		)
+	);
 
 	return scene;
 };
