@@ -20,3 +20,7 @@ body {
     text-align: center;
     text-transform: uppercase;
 }
+
+#renderCanvas:focus {
+    outline: 0;
+}
