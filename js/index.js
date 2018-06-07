@@ -109,19 +109,5 @@ var createScene = function(engine, canvas) {
 	var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box.material = mat;
 
-	// assign the box the click actions
-	box.actionManager = new BABYLON.ActionManager(scene);
-	box.actionManager.registerAction(
-		new BABYLON.ExecuteCodeAction(
-			BABYLON.ActionManager.OnPickTrigger,
-			function(unit_mesh) {
-				console.log("Box clicked! " + unit_mesh.meshUnderPointer.name);
-				console.log(
-					"Box clicked! " + unit_mesh.meshUnderPointer.getIndices()
-				);
-			}
-		)
-	);
-
 	return scene;
 };
