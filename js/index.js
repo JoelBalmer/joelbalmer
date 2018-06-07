@@ -15,13 +15,38 @@ window.addEventListener("DOMContentLoaded", function() {
 	//When click event is raised, open link on click
 	window.addEventListener("click", function() {
 		var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+		if (!pickResult.hit) {
+			return;
+		}
+
 		var indices = pickResult.pickedMesh.getIndices();
 		var firstVertex = indices[pickResult.faceId * 3];
 
-		//16 top cv, 8 left github, 0 right music, 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
-		// switch (firstVertex) {
-		// 	case 16:
-		// }
+		//16 top cv, 8 left github, 0 right music
+		//12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
+		switch (firstVertex) {
+			case 16:
+				window.open("./res/CV.pdf");
+				break;
+			case 8:
+				window.open("https://github.com/joelbalmer");
+				break;
+			case 0:
+				window.open("http://www.joelbalmermusic.co.uk/");
+				break;
+			case 4:
+				window.open("./res/CV.pdf");
+				break;
+			case 20:
+				window.open("https://github.com/joelbalmer");
+				break;
+			case 12:
+				window.open("http://www.joelbalmermusic.co.uk/");
+				break;
+			default:
+				console.log("faceId didn't match");
+				break;
+		}
 	});
 });
 
