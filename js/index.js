@@ -54,12 +54,9 @@ var sendGtagEvent = function(goalName, url) {
 	gtag("event", "Click", {
 		event_category: "Cube",
 		event_label: goalName,
-		value: 1,
-		event_callback: function() {
-			console.log("gtag event '" + goalName + "' sent");
-			window.open(url);
-		}
+		value: 1
 	});
+	window.open(url);
 };
 
 var createScene = function(engine, canvas) {
