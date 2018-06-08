@@ -4,8 +4,15 @@ window.addEventListener("DOMContentLoaded", function() {
 	var engine = new BABYLON.Engine(canvas, true);
 	var scene = createScene(engine, canvas);
 
+	scene.internalMesh = scene.getMeshByName("box");
+	scene.registerBeforeRender(function() {
+		scene.internalMesh.rotation.y -= 0.2;
+	});
+
 	engine.runRenderLoop(function() {
-		scene.render();
+		if (scene.isReady()) {
+			scene.render();
+		}
 	});
 
 	window.addEventListener("resize", function() {
