@@ -26,22 +26,22 @@ window.addEventListener("DOMContentLoaded", function() {
 		//12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
 		switch (firstVertex) {
 			case 16:
-				window.open("./res/CV.pdf");
+				sendGtagEvent("CV", "./res/CV.pdf");
 				break;
 			case 8:
-				window.open("https://github.com/joelbalmer");
+				sendGtagEvent("Github", "https://github.com/joelbalmer");
 				break;
 			case 0:
-				window.open("http://www.joelbalmermusic.co.uk/");
+				sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
 				break;
 			case 4:
-				window.open("./res/CV.pdf");
+				sendGtagEvent("CV", "./res/CV.pdf");
 				break;
 			case 20:
-				window.open("https://github.com/joelbalmer");
+				sendGtagEvent("Github", "https://github.com/joelbalmer");
 				break;
 			case 12:
-				window.open("http://www.joelbalmermusic.co.uk/");
+				sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
 				break;
 			default:
 				console.log("faceId didn't match");
@@ -49,6 +49,17 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 });
+
+var sendGtagEvent = function(goalName, url) {
+	gtag("event", "Click", {
+		event_category: "Cube",
+		event_label: goalName,
+		value: 1,
+		event_callback: function() {
+			window.open(url);
+		}
+	});
+};
 
 var createScene = function(engine, canvas) {
 	// create the scene space
