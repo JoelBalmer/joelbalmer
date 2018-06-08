@@ -1,7 +1,11 @@
+/* fix for mobile fonts */
+@import url("./fonts/montserrat/stylesheet.css");
+
 html,
 body {
     background: #ffffff;
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: montserratbold;
     font-size: 30px;
     overflow: hidden;
     width: 100%;
