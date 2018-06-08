@@ -98,9 +98,9 @@ var createScene = function(engine, canvas) {
 	}
 
 	var options = {
-		height: 0.5,
-		width: 0.5,
-		depth: 0.5,
+		height: 0.25,
+		width: 0.25,
+		depth: 0.25,
 		faceUV: faceUV,
 		updatable: true
 	};
