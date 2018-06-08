@@ -56,6 +56,7 @@ var sendGtagEvent = function(goalName, url) {
 		event_label: goalName,
 		value: 1,
 		event_callback: function() {
+			console.log("gtag event '" + goalName + "' sent");
 			window.open(url);
 		}
 	});
