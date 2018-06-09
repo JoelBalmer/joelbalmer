@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	scene.internalMesh = scene.getMeshByName("box");
 	scene.registerBeforeRender(function() {
-		scene.internalMesh.rotation.y -= 0.2;
+		scene.internalMesh.rotation.y += 0.005;
 	});
 
 	engine.runRenderLoop(function() {
@@ -19,8 +19,35 @@ window.addEventListener("DOMContentLoaded", function() {
 		engine.resize();
 	});
 
-	//When click event is raised, open link on click
 	window.addEventListener("click", function() {
+		// THIS IS HOW YOU DO IT!
+		//https://www.babylonjs-playground.com/#DMLMIP#1
+
+		/*
+		var animationBox = new BABYLON.Animation(
+			"boxAnimation",
+			"rotation.y",
+			30,
+			BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+			BABYLON.Animation.ANIMATION
+		);
+
+		var keys = [];
+		var value = 0.0;
+		for (var i = 0; i < 2000; i++) {
+			var currentKey = {};
+			currentKey.frame = i;
+			currentKey.value = i / 100;
+			keys.push(currentKey);
+		}
+
+		animationBox.setKeys(keys);
+		scene.internalMesh.animations = [];
+		scene.internalMesh.animations.push(animationBox);
+		scene.beginAnimation(scene.internalMesh, 0, 2000, true);
+		*/
+
+		// handle clicks on cube faces
 		var pickResult = scene.pick(scene.pointerX, scene.pointerY);
 		if (!pickResult.hit) {
 			return;
