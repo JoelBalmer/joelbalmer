@@ -30,7 +30,6 @@ window.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function onPointerUp() {
-		console.log("mouseup: " + scene.pointerX, scene.pointerY);
 		if (
 			Math.abs(scene.pointerX - deltaX) < 3 ||
 			Math.abs(scene.pointerY - deltaY) < 3
