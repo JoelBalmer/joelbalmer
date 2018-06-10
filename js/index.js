@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	scene.internalMesh = scene.getMeshByName("box");
 	scene.registerBeforeRender(function() {
-		scene.internalMesh.rotation.y += 0.005;
+		scene.internalMesh.rotation.y += 0.002;
 	});
 
 	engine.runRenderLoop(function() {
@@ -20,70 +20,69 @@ window.addEventListener("DOMContentLoaded", function() {
 		engine.resize();
 	});
 
-	window.addEventListener("click", function() {
-		// THIS IS HOW YOU DO IT!
-		//https://www.babylonjs-playground.com/#DMLMIP#1
+	// detect whether point click or drag has been made
 
-		/*
-		var animationBox = new BABYLON.Animation(
-			"boxAnimation",
-			"rotation.y",
-			30,
-			BABYLON.Animation.ANIMATIONTYPE_FLOAT,
-			BABYLON.Animation.ANIMATION
-		);
+	var deltaX, deltaY;
+	function onPointerDown() {
+		console.log("mousedown: " + scene.pointerX, scene.pointerY);
+		deltaX = scene.pointerX;
+		deltaY = scene.pointerY;
+	}
 
-		var keys = [];
-		var value = 0.0;
-		for (var i = 0; i < 2000; i++) {
-			var currentKey = {};
-			currentKey.frame = i;
-			currentKey.value = i / 100;
-			keys.push(currentKey);
+	function onPointerUp() {
+		console.log("mouseup: " + scene.pointerX, scene.pointerY);
+		if (
+			Math.abs(scene.pointerX - deltaX) < 3 ||
+			Math.abs(scene.pointerY - deltaY) < 3
+		) {
+			clickOutcome(scene.pick(scene.pointerX, scene.pointerY));
 		}
+	}
 
-		animationBox.setKeys(keys);
-		scene.internalMesh.animations = [];
-		scene.internalMesh.animations.push(animationBox);
-		scene.beginAnimation(scene.internalMesh, 0, 2000, true);
-		*/
-
-		// handle clicks on cube faces
-		var pickResult = scene.pick(scene.pointerX, scene.pointerY);
-		if (!pickResult.hit) {
-			return;
-		}
-
-		var indices = pickResult.pickedMesh.getIndices();
-		var firstVertex = indices[pickResult.faceId * 3];
-
-		//16 top cv, 8 left github, 0 right music
-		//12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
-		switch (firstVertex) {
-			case 16:
-				sendGtagEvent("CV", "./res/CV.pdf");
-				break;
-			case 8:
-				sendGtagEvent("Github", "https://github.com/joelbalmer");
-				break;
-			case 0:
-				sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
-				break;
-			case 4:
-				sendGtagEvent("CV", "./res/CV.pdf");
-				break;
-			case 20:
-				sendGtagEvent("Github", "https://github.com/joelbalmer");
-				break;
-			case 12:
-				sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
-				break;
-			default:
-				console.log("faceId didn't match");
-				break;
-		}
-	});
+	// Add click listeners
+	window.addEventListener("mousedown", onPointerDown);
+	window.addEventListener("pointerdown", onPointerDown);
+	window.addEventListener("touchstart", onPointerDown);
+	window.addEventListener("mouseup", onPointerUp);
+	window.addEventListener("pointerup", onPointerUp);
+	window.addEventListener("touchend", onPointerUp);
 });
+
+var clickOutcome = function(pickResult) {
+	if (!pickResult.hit) {
+		return;
+	}
+
+	// 16 top cv, 8 left github, 0 right music
+	// 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
+
+	var indices = pickResult.pickedMesh.getIndices();
+	var firstVertex = indices[pickResult.faceId * 3];
+
+	switch (firstVertex) {
+		case 16:
+			sendGtagEvent("CV", "./res/CV.pdf");
+			break;
+		case 8:
+			sendGtagEvent("Github", "https://github.com/joelbalmer");
+			break;
+		case 0:
+			sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
+			break;
+		case 4:
+			sendGtagEvent("CV", "./res/CV.pdf");
+			break;
+		case 20:
+			sendGtagEvent("Github", "https://github.com/joelbalmer");
+			break;
+		case 12:
+			sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
+			break;
+		default:
+			console.log("faceId didn't match");
+			break;
+	}
+};
 
 var sendGtagEvent = function(goalName, url) {
 	gtag("event", "Click", {
