@@ -4,16 +4,51 @@ window.addEventListener("DOMContentLoaded", function() {
 	var engine = new BABYLON.Engine(canvas, true);
 	var scene = createScene(engine, canvas);
 
+	scene.internalMesh = scene.getMeshByName("box");
+	scene.registerBeforeRender(function() {
+		scene.internalMesh.rotation.y += 0.005;
+	});
+
 	engine.runRenderLoop(function() {
-		scene.render();
+		if (scene.isReady()) {
+			scene.render();
+			engine.hideLoadingUI();
+		}
 	});
 
 	window.addEventListener("resize", function() {
 		engine.resize();
 	});
 
-	//When click event is raised, open link on click
 	window.addEventListener("click", function() {
+		// THIS IS HOW YOU DO IT!
+		//https://www.babylonjs-playground.com/#DMLMIP#1
+
+		/*
+		var animationBox = new BABYLON.Animation(
+			"boxAnimation",
+			"rotation.y",
+			30,
+			BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+			BABYLON.Animation.ANIMATION
+		);
+
+		var keys = [];
+		var value = 0.0;
+		for (var i = 0; i < 2000; i++) {
+			var currentKey = {};
+			currentKey.frame = i;
+			currentKey.value = i / 100;
+			keys.push(currentKey);
+		}
+
+		animationBox.setKeys(keys);
+		scene.internalMesh.animations = [];
+		scene.internalMesh.animations.push(animationBox);
+		scene.beginAnimation(scene.internalMesh, 0, 2000, true);
+		*/
+
+		// handle clicks on cube faces
 		var pickResult = scene.pick(scene.pointerX, scene.pointerY);
 		if (!pickResult.hit) {
 			return;
@@ -86,6 +121,9 @@ var createScene = function(engine, canvas) {
 		new BABYLON.Vector3(0, 1, -1),
 		scene
 	);
+
+	engine.loadingUIBackgroundColor = "white";
+	engine.displayLoadingUI();
 
 	// import texture atlas, sprite sheet
 	var mat = new BABYLON.StandardMaterial("mat", scene);
