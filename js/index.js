@@ -12,6 +12,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	engine.runRenderLoop(function() {
 		if (scene.isReady()) {
 			scene.render();
+			engine.hideLoadingUI();
 		}
 	});
 
@@ -120,6 +121,9 @@ var createScene = function(engine, canvas) {
 		new BABYLON.Vector3(0, 1, -1),
 		scene
 	);
+
+	engine.loadingUIBackgroundColor = "white";
+	engine.displayLoadingUI();
 
 	// import texture atlas, sprite sheet
 	var mat = new BABYLON.StandardMaterial("mat", scene);

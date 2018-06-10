@@ -44,6 +44,21 @@ h1 {
 	outline: 0;
 }
 
+/* override babylonjs loading screen */
+
+#babylonjsLoadingDiv > img {
+	display: none !important;
+}
+
+#babylonjsLoadingDiv > div {
+	color: #000000 !important;
+	text-transform: uppercase;
+	background: #ffffff !important;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-family: montserratbold !important;
+	font-size: 45px !important;
+}
+
 @media (max-width: 768px), (max-height: 768px) {
 	h1 {
 		margin-top: 20px;
