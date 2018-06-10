@@ -145,9 +145,9 @@ var createScene = function(engine, canvas) {
 	}
 
 	var options = {
-		height: 0.25,
-		width: 0.25,
-		depth: 0.25,
+		height: 0.35,
+		width: 0.35,
+		depth: 0.35,
 		faceUV: faceUV,
 		updatable: true
 	};
