@@ -24,7 +24,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	var deltaX, deltaY;
 	function onPointerDown() {
-		console.log("mousedown: " + scene.pointerX, scene.pointerY);
 		deltaX = scene.pointerX;
 		deltaY = scene.pointerY;
 	}
