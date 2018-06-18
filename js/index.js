@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var engine = new BABYLON.Engine(canvas, true);
 	var scene = createScene(engine, canvas);
 
+	scene.defaultCursor = "move";
 	scene.internalMesh = scene.getMeshByName("box");
 	scene.registerBeforeRender(function() {
 		scene.internalMesh.rotation.y += 0.002;
@@ -152,6 +153,31 @@ var createScene = function(engine, canvas) {
 	// create the box and assign the material with textures to it
 	var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box.material = mat;
+
+	box.actionManager = new BABYLON.ActionManager(scene);
+
+	//SETUP CURSOR CHANGE
+	//http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+
+	// //ON MOUSE ENTER
+	// box.actionManager.registerAction(
+	// 	new BABYLON.ExecuteCodeAction(
+	// 		BABYLON.ActionManager.OnPointerOverTrigger,
+	// 		function(ev) {
+	// 			scene.defaultCursor = "pointer";
+	// 		}
+	// 	)
+	// );
+
+	// //ON MOUSE EXIT
+	// box.actionManager.registerAction(
+	// 	new BABYLON.ExecuteCodeAction(
+	// 		BABYLON.ActionManager.OnPointerOutTrigger,
+	// 		function(ev) {
+	// 			scene.defaultCursor = "move";
+	// 		}
+	// 	)
+	// );
 
 	return scene;
 };
