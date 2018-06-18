@@ -158,6 +158,7 @@ var createScene = function(engine, canvas) {
 
 	//SETUP CURSOR CHANGE
 	//http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	//http://www.html5gamedevs.com/topic/16139-change-cursor-on-mouse-over/
 
 	// //ON MOUSE ENTER
 	// box.actionManager.registerAction(
