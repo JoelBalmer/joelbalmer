@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	scene.internalMesh = scene.getMeshByName("box");
 	scene.registerBeforeRender(function() {
-		scene.internalMesh.rotation.y += 0.005;
+		scene.internalMesh.rotation.y += 0.002;
 	});
 
 	engine.runRenderLoop(function() {
@@ -100,17 +100,13 @@ var createScene = function(engine, canvas) {
 	scene.clearColor = new BABYLON.Color3(1, 1, 1);
 
 	// add a camera to the scene and attach it to the canvas
-	var camera = new BABYLON.ArcRotateCamera(
-		"Camera",
-		Math.PI / 4,
-		Math.PI / 3,
-		2,
-		BABYLON.Vector3.Zero(),
+	var camera = new BABYLON.FreeCamera(
+		"camera1",
+		new BABYLON.Vector3(0, 0.5, -2),
 		scene
 	);
-	camera.attachControl(canvas, true);
+	//camera.attachControl(canvas, true);
 
-	// add lights to the scene
 	var light1 = new BABYLON.HemisphericLight(
 		"light1",
 		new BABYLON.Vector3(1, 1, 0),
@@ -155,6 +151,33 @@ var createScene = function(engine, canvas) {
 	// create the box and assign the material with textures to it
 	var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box.material = mat;
+	camera.setTarget(box.position);
+
+	//SETUP CURSOR CHANGE
+	//http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
+	//http://www.html5gamedevs.com/topic/16139-change-cursor-on-mouse-over/
+
+	//box.actionManager = new BABYLON.ActionManager(scene);
+
+	// //ON MOUSE ENTER
+	// box.actionManager.registerAction(
+	// 	new BABYLON.ExecuteCodeAction(
+	// 		BABYLON.ActionManager.OnPointerOverTrigger,
+	// 		function(ev) {
+	// 			scene.defaultCursor = "pointer";
+	// 		}
+	// 	)
+	// );
+
+	// //ON MOUSE EXIT
+	// box.actionManager.registerAction(
+	// 	new BABYLON.ExecuteCodeAction(
+	// 		BABYLON.ActionManager.OnPointerOutTrigger,
+	// 		function(ev) {
+	// 			scene.defaultCursor = "move";
+	// 		}
+	// 	)
+	// );
 
 	return scene;
 };
