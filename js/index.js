@@ -22,7 +22,6 @@ window.addEventListener("DOMContentLoaded", function() {
 	});
 
 	// detect whether point click or drag has been made
-
 	var deltaX, deltaY;
 	function onPointerDown() {
 		deltaX = scene.pointerX;
@@ -54,10 +53,8 @@ var clickOutcome = function(pickResult) {
 
 	// 16 top cv, 8 left github, 0 right music
 	// 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
-
 	var indices = pickResult.pickedMesh.getIndices();
 	var firstVertex = indices[pickResult.faceId * 3];
-
 	switch (firstVertex) {
 		case 16:
 			sendGtagEvent("CV", "./res/CV.pdf");
@@ -153,32 +150,7 @@ var createScene = function(engine, canvas) {
 	// create the box and assign the material with textures to it
 	var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
 	box.material = mat;
-
 	box.actionManager = new BABYLON.ActionManager(scene);
-
-	//SETUP CURSOR CHANGE
-	//http://doc.babylonjs.com/how_to/how_to_use_actions#triggers
-	//http://www.html5gamedevs.com/topic/16139-change-cursor-on-mouse-over/
-
-	// //ON MOUSE ENTER
-	// box.actionManager.registerAction(
-	// 	new BABYLON.ExecuteCodeAction(
-	// 		BABYLON.ActionManager.OnPointerOverTrigger,
-	// 		function(ev) {
-	// 			scene.defaultCursor = "pointer";
-	// 		}
-	// 	)
-	// );
-
-	// //ON MOUSE EXIT
-	// box.actionManager.registerAction(
-	// 	new BABYLON.ExecuteCodeAction(
-	// 		BABYLON.ActionManager.OnPointerOutTrigger,
-	// 		function(ev) {
-	// 			scene.defaultCursor = "move";
-	// 		}
-	// 	)
-	// );
 
 	return scene;
 };
