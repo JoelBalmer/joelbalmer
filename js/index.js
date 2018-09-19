@@ -1,4 +1,10 @@
 window.addEventListener("DOMContentLoaded", function() {
+  var overlay = document.getElementById("info-overlay");
+  overlay.addEventListener("click", removeOverlay);
+  window.addEventListener("mouseup", removeOverlay);
+  window.addEventListener("pointerup", removeOverlay);
+  window.addEventListener("touchend", removeOverlay);
+
   // setup the babylon.js scene
   var canvas = document.getElementById("renderCanvas");
   var engine = new BABYLON.Engine(canvas, true);
@@ -47,7 +53,6 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 var removeOverlay = function() {
-  var container = document.getElementById("container");
   var overlay = document.getElementById("info-overlay");
   overlay.classList.add("hidden");
 };
