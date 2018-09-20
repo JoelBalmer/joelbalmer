@@ -66,7 +66,6 @@ var clickOutcome = function(pickResult) {
   // 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
   var indices = pickResult.pickedMesh.getIndices();
   var firstVertex = indices[pickResult.faceId * 3];
-  console.log(firstVertex);
   switch (firstVertex) {
     case 16:
       sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
@@ -87,7 +86,6 @@ var clickOutcome = function(pickResult) {
       sendGtagEvent("Garden", "https://www.instagram.com/allotmental_health/");
       break;
     default:
-      console.log("faceId didn't match");
       break;
   }
 };
