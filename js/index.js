@@ -66,9 +66,10 @@ var clickOutcome = function(pickResult) {
   // 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
   var indices = pickResult.pickedMesh.getIndices();
   var firstVertex = indices[pickResult.faceId * 3];
+  console.log(firstVertex);
   switch (firstVertex) {
     case 16:
-      sendGtagEvent("CV", "./res/CV.pdf");
+      sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
       break;
     case 8:
       sendGtagEvent("Github", "https://github.com/joelbalmer");
@@ -80,10 +81,10 @@ var clickOutcome = function(pickResult) {
       sendGtagEvent("CV", "./res/CV.pdf");
       break;
     case 20:
-      sendGtagEvent("Github", "https://github.com/joelbalmer");
+      sendGtagEvent("CV", "./res/CV.pdf");
       break;
     case 12:
-      sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
+      sendGtagEvent("Garden", "https://www.instagram.com/allotmental_health/");
       break;
     default:
       console.log("faceId didn't match");
@@ -133,13 +134,13 @@ var createScene = function(engine, canvas) {
 
   // import texture atlas, sprite sheet
   var mat = new BABYLON.StandardMaterial("mat", scene);
-  var texture = new BABYLON.Texture("./img/items.png", scene);
+  //var texture = new BABYLON.Texture("./img/items.png", scene);
+  var texture = new BABYLON.Texture("./img/items-4.png", scene);
   mat.diffuseTexture = texture;
 
-  var columns = 3;
+  var columns = 4;
   var rows = 1;
   var faceUV = new Array(6);
-  var faceColors = new Array(6);
 
   for (var i = 0; i < 6; i++) {
     faceUV[i] = new BABYLON.Vector4(
