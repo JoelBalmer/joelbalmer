@@ -1,9 +1,16 @@
 window.addEventListener("DOMContentLoaded", function() {
+  // hide overlay if previous visitor
   var overlay = document.getElementById("info-overlay");
-  overlay.addEventListener("click", removeOverlay);
-  window.addEventListener("mouseup", removeOverlay);
-  window.addEventListener("pointerup", removeOverlay);
-  window.addEventListener("touchend", removeOverlay);
+  document.cookie.split(";").filter(cookie => {
+    if (cookie.includes("overlay=hidden")) {
+      overlay.hidden = true;
+    } else {
+      overlay.addEventListener("click", removeOverlay);
+      overlay.addEventListener("mouseup", removeOverlay);
+      overlay.addEventListener("pointerup", removeOverlay);
+      overlay.addEventListener("touchend", removeOverlay);
+    }
+  });
 
   // setup the babylon.js scene
   var canvas = document.getElementById("renderCanvas");
@@ -55,6 +62,7 @@ window.addEventListener("DOMContentLoaded", function() {
 var removeOverlay = function() {
   var overlay = document.getElementById("info-overlay");
   overlay.classList.add("hidden");
+  document.cookie = "overlay=hidden";
 };
 
 var clickOutcome = function(pickResult) {
