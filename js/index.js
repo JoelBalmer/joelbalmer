@@ -60,9 +60,13 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 var removeOverlay = function() {
+  // hide overlay animation
   var overlay = document.getElementById("info-overlay");
   overlay.classList.add("hidden");
-  document.cookie = "overlay=hidden";
+
+  // set overlay cookie
+  let date = new Date("December 17, 2028");
+  document.cookie = "overlay=hidden; expires=" + date.toUTCString();
 };
 
 var clickOutcome = function(pickResult) {
