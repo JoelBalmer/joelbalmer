@@ -96,7 +96,7 @@ var sendGtagEvent = function(goalName, url) {
     event_label: goalName,
     value: 1
   });
-  window.open(url);
+  document.location.href = url;
 };
 
 var createScene = function(engine, canvas) {
