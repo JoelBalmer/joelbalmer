@@ -8,6 +8,16 @@ body {
   height: 100%;
   font-size: 15px;
   text-align: center;
+  text-transform: none;
+}
+
+a {
+  color: red;
+}
+
+h1,
+h2,
+h3 {
   text-transform: uppercase;
 }
 
