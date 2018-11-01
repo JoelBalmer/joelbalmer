@@ -18,4 +18,9 @@ div {
 #container {
   width: 80%;
   margin: 0 auto;
+  text-align: left;
+}
+
+#title {
+  text-align: center;
 }
