@@ -180,7 +180,7 @@ var createScene = function(engine, canvas) {
     new BABYLON.ExecuteCodeAction(
       BABYLON.ActionManager.OnPointerOverTrigger,
       function(ev) {
-        box.material.emissiveColor = BABYLON.Color3.Red();
+        box.material.emissiveColor = BABYLON.Color3.Teal();
       }
     )
   );
