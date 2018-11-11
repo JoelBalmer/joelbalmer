@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", function() {
   var engine = new BABYLON.Engine(canvas, true);
   var scene = createScene(engine, canvas);
 
-  scene.defaultCursor = "move";
+  scene.defaultCursor = "pointer";
   scene.internalMesh = scene.getMeshByName("box");
   scene.registerBeforeRender(function() {
     scene.internalMesh.rotation.y += 0.002;
@@ -172,7 +172,34 @@ var createScene = function(engine, canvas) {
   // create the box and assign the material with textures to it
   var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
   box.material = mat;
+  box.isPickable = true;
   box.actionManager = new BABYLON.ActionManager(scene);
+
+  //ON MOUSE ENTER
+  box.actionManager.registerAction(
+    new BABYLON.ExecuteCodeAction(
+      BABYLON.ActionManager.OnPointerOverTrigger,
+      function(ev) {
+        box.material.emissiveColor = BABYLON.Color3.Red();
+      }
+    )
+  );
+
+  //ON MOUSE EXIT
+  box.actionManager.registerAction(
+    new BABYLON.ExecuteCodeAction(
+      BABYLON.ActionManager.OnPointerOutTrigger,
+      function(ev) {
+        box.material.emissiveColor = BABYLON.Color3.Black();
+      }
+    )
+  );
+
+  scene.registerAfterRender(function() {
+    if (canvas.style.cursor === "pointer") {
+      canvas.style.cursor = "grab";
+    }
+  });
 
   return scene;
 };
