@@ -43,8 +43,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function onPointerUp() {
     if (
-      Math.abs(scene.pointerX - deltaX) < 3 ||
-      Math.abs(scene.pointerY - deltaY) < 3
+      Math.abs(scene.pointerX - deltaX) < 2 ||
+      Math.abs(scene.pointerY - deltaY) < 2
     ) {
       clickOutcome(scene.pick(scene.pointerX, scene.pointerY));
     }
@@ -73,6 +73,9 @@ var clickOutcome = function(pickResult) {
   if (!pickResult.hit) {
     return;
   }
+
+  // change colour to red when clicked
+  pickResult.pickedMesh.material.emissiveColor = BABYLON.Color3.Red();
 
   // 16 top cv, 8 left github, 0 right music
   // 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
