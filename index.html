@@ -1,90 +1,166 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-120580481-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120580481-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+      gtag("config", "UA-120580481-1");
+    </script>
 
-		gtag('config', 'UA-120580481-1');
-	</script>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./apple-icon-76x76.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="https://www.joelbalmer.life/img/jb.jpg"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
-	<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="57x57" href="./apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="./apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="./apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="./apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="./apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="./apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="./apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="./apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="./apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="./android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="https://www.joelbalmer.life/img/jb.jpg">
-	<meta name="theme-color" content="#ffffff">
+    <meta
+      name="description"
+      content="Javascript enthusiast, film composer and 'Allotmental Health' practitioner!"
+    />
+    <meta name="author" content="Joel Balmer" />
+    <meta property="og:title" content="Joel Balmer" />
+    <meta property="og:url" content="https://www.joelbalmer.life/" />
+    <meta
+      property="og:image"
+      content="https://www.joelbalmer.life/img/jb.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Javascript enthusiast, film composer and 'Allotmental Health' practitioner!"
+    />
+    <meta name="twitter:site" content="@joelObalmer" />
+    <meta name="twitter:title" content="Joel Balmer" />
+    <meta
+      name="twitter:description"
+      content="Javascript enthusiast, film composer and 'Allotmental Health' practitioner!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.joelbalmer.life/img/jb.jpg"
+    />
 
-	<meta name="description" content="Javascript enthusiast, film composer and 'Allotmental Health' practitioner!">
-	<meta name="author" content="Joel Balmer">
-	<meta property="og:title" content="Joel Balmer">
-	<meta property="og:url" content="https://www.joelbalmer.life/">
-	<meta property="og:image" content="https://www.joelbalmer.life/img/jb.jpg">
-	<meta property="og:description" content="Javascript enthusiast, film composer and 'Allotmental Health' practitioner!">
-	<meta name="twitter:site" content="@joelObalmer">
-	<meta name="twitter:title" content="Joel Balmer">
-	<meta name="twitter:description" content="Javascript enthusiast, film composer and 'Allotmental Health' practitioner!">
-	<meta name="twitter:image" content="https://www.joelbalmer.life/img/jb.jpg">
+    <title>Joel Balmer</title>
 
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./css/fonts/montserrat/stylesheet.css"
+    />
+    <link href="./css/index.css" rel="stylesheet" />
+    <script src="https://preview.babylonjs.com/babylon.js"></script>
+    <!--
+      Link to the last version of BabylonJS loaders to enable loading filetypes such as .gltf
+    -->
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <!--
+      Link to pep.js to ensure pointer events work consistently in all browsers
+    -->
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    <script src="./js/index.js" type="text/javascript"></script>
+  </head>
 
-	<title>Joel Balmer</title>
-
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="./css/fonts/montserrat/stylesheet.css">
-	<link href="./css/index.css" rel="stylesheet">
-	<script src="https://preview.babylonjs.com/babylon.js"></script>
-	<!-- Link to the last version of BabylonJS loaders to enable loading filetypes such as .gltf -->
-	<script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-	<!-- Link to pep.js to ensure pointer events work consistently in all browsers -->
-	<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
-	<script src="./js/index.js" type="text/javascript"></script>
-</head>
-
-<body>
-	<div id="container" touch-action="none">
-		<div id="info-overlay">
-			<p id="info-text">
-				Spin me and explore...
-			</p>
-		</div>
-		<div id="title">
-			<div class="row">
-				<div class="col-sm">
-				</div>
-				<div class="col-sm">
-					<p>Joel Balmer</p>
-					<p>Creative - Developer - Mindful</p>
-				</div>
-				<div class="col-sm">
-					<a href="https://stackoverflow.com/users/2501304/joel-balmer">
-						<img src="https://stackoverflow.com/users/flair/2501304.png" width="208" height="58" alt="profile for Joel Balmer at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
-						 title="profile for Joel Balmer at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
-					</a>
-				</div>
-			</div>
-		</div>
-		<div id="canvasWrapper">
-			<canvas id="renderCanvas"></canvas>
-		</div>
-	</div>
-</body>
-
+  <body>
+    <div id="container" touch-action="none">
+      <div id="info-overlay"><p id="info-text">Spin me and explore...</p></div>
+      <div id="title">
+        <div class="row">
+          <div class="col-sm">
+            <div
+              class="github-widget"
+              data-username="joelbalmer"
+              style="width:100px;height:300px;font-size:9px"
+            ></div>
+            <script src="https://unpkg.com/github-card@1.2.1/dist/widget.js"></script>
+          </div>
+          <div class="col-sm">
+            <p>Joel Balmer</p>
+            <p>Creative - Developer - Mindful</p>
+          </div>
+          <div class="col-sm">
+            <a href="https://stackoverflow.com/users/2501304/joel-balmer">
+              <img
+                src="https://stackoverflow.com/users/flair/2501304.png"
+                width="208"
+                height="58"
+                alt="profile for Joel Balmer at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
+                title="profile for Joel Balmer at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="canvasWrapper"><canvas id="renderCanvas"></canvas></div>
+    </div>
+  </body>
 </html>
