@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", function() {
   // detect whether point click or drag has been made
   var deltaX
   var deltaY;
-  
+
   function onPointerDown() {
     deltaX = scene.pointerX;
     deltaY = scene.pointerY;
@@ -59,6 +59,8 @@ window.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("mouseup", onPointerUp);
   window.addEventListener("pointerup", onPointerUp);
   window.addEventListener("touchend", onPointerUp);
+
+  window.addEventListener("click", printMousePos);
 });
 
 var removeOverlay = function() {
@@ -70,6 +72,19 @@ var removeOverlay = function() {
   let date = new Date("December 17, 2028");
   document.cookie = "overlay=hidden; expires=" + date.toUTCString();
 };
+
+function printMousePos(event) {
+  let circle = document.getElementById("circle-click");
+
+  circle.style.width = "20px";
+  circle.style.height = "20px";
+  circle.style.borderRadius = "20px";
+
+  circle.style.left = event.clientX - 10 + "px";
+  circle.style.top = event.clientY - 10 + "px";
+
+  circle.classList.add("hide");
+}
 
 var clickOutcome = function(pickResult) {
   if (!pickResult.hit) {
