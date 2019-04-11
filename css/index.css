@@ -92,3 +92,14 @@ p {
     font-size: 30px;
   }
 }
+
+#circle-click {
+  background-color: darkcyan;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  opacity: 1;
+}

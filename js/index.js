@@ -35,7 +35,9 @@ window.addEventListener("DOMContentLoaded", function() {
   });
 
   // detect whether point click or drag has been made
-  var deltaX, deltaY;
+  var deltaX
+  var deltaY;
+  
   function onPointerDown() {
     deltaX = scene.pointerX;
     deltaY = scene.pointerY;
