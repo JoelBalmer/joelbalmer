@@ -75,15 +75,18 @@ var removeOverlay = function() {
 
 function printMousePos(event) {
   let circle = document.getElementById("circle-click");
-
-  circle.style.width = "20px";
-  circle.style.height = "20px";
-  circle.style.borderRadius = "20px";
-
   circle.style.left = event.clientX - 10 + "px";
   circle.style.top = event.clientY - 10 + "px";
+  
+  // Continue fade animation
+  circle.classList.add("fade-in-out");
+  circle.addEventListener("animationend", function () {
+    circle.classList.remove("fade-in-out");
+  });
+  circle.addEventListener("webkitAnimationEnd", function(){
+    circle.classList.remove("fade-in-out");
+  });
 
-  circle.classList.add("hide");
 }
 
 var clickOutcome = function(pickResult) {
