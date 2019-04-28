@@ -17,10 +17,15 @@ window.addEventListener("DOMContentLoaded", function() {
   var engine = new BABYLON.Engine(canvas, true);
   var scene = createScene(engine, canvas);
 
+  // setup animation variables
+  var cubePosition = 0;
+  window.shouldAnimate = 1;
+
+
   scene.defaultCursor = "pointer";
   scene.internalMesh = scene.getMeshByName("box");
   scene.registerBeforeRender(function() {
-    scene.internalMesh.rotation.y += 0.002;
+    scene.internalMesh.rotation.y = cubePosition += (shouldAnimate * 0.002);
   });
 
   engine.runRenderLoop(function() {
@@ -48,6 +53,7 @@ window.addEventListener("DOMContentLoaded", function() {
       Math.abs(scene.pointerX - deltaX) < 2 ||
       Math.abs(scene.pointerY - deltaY) < 2
     ) {
+      window.shouldAnimate = 0;
       clickOutcome(scene.pick(scene.pointerX, scene.pointerY));
     }
   }
@@ -203,7 +209,7 @@ var createScene = function(engine, canvas) {
     new BABYLON.ExecuteCodeAction(
       BABYLON.ActionManager.OnPointerOverTrigger,
       function(ev) {
-        box.material.emissiveColor = BABYLON.Color3.Teal();
+        box.material.emissiveColor = BABYLON.Color3.Red();
       }
     )
   );
