@@ -40,7 +40,17 @@ ul {
 }
 
 ul > li {
-  margin: 0px 15px;
+  padding: 0px 15px;
+  border-left: solid  #212529 3px;
+  border-right: solid  #212529 3px;
+} 
+
+ul > li:first-child {
+  border-left: none;
+}
+
+ul > li:last-child {
+  border-right: none;
 }
 
 li > a, li > a:hover {
