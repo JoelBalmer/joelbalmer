@@ -9,6 +9,7 @@ body {
   margin: 0px;
   padding: 0px;
   font-size: 35px;
+  text-transform: uppercase;
 }
 
 #container {
@@ -21,7 +22,6 @@ body {
   position: absolute;
   width: 100%;
   text-align: center;
-  text-transform: uppercase;
 }
 
 h1 {
@@ -31,7 +31,7 @@ h1 {
 
 p {
   margin-top: 10px;
-  text-transform: uppercase;
+  font-size: 22px;
 }
 
 ul {
@@ -69,6 +69,7 @@ li > a, li > a:hover {
   position: absolute;
   top: 50%;
   width: 100%;
+  font-size: 30px;
 }
 
 #canvasWrapper {
@@ -100,7 +101,6 @@ li > a, li > a:hover {
 
 #babylonjsLoadingDiv > div {
   color: #000000 !important;
-  text-transform: uppercase;
   background: #ffffff !important;
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-family: montserratbold !important;
