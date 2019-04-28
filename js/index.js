@@ -53,7 +53,6 @@ window.addEventListener("DOMContentLoaded", function() {
       Math.abs(scene.pointerX - deltaX) < 2 ||
       Math.abs(scene.pointerY - deltaY) < 2
     ) {
-      window.shouldAnimate = 0;
       clickOutcome(scene.pick(scene.pointerX, scene.pointerY));
     }
   }
@@ -99,6 +98,9 @@ var clickOutcome = function(pickResult) {
   if (!pickResult.hit) {
     return;
   }
+
+  // kill animation
+  window.shouldAnimate = 0;
 
   // change colour to red when clicked
   pickResult.pickedMesh.material.emissiveColor = BABYLON.Color3.Red();
