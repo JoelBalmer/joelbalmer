@@ -34,6 +34,19 @@ p {
   text-transform: uppercase;
 }
 
+ul {
+  display: inline-flex;
+  list-style: none;
+}
+
+ul > li {
+  margin: 0px 15px;
+}
+
+li > a, li > a:hover {
+  color: #212529;
+}
+
 #info-overlay {
   position: absolute;
   background: white;
