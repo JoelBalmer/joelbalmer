@@ -29,6 +29,11 @@ h1 {
   margin-top: 60px;
 }
 
+h1 > a:hover {
+  cursor: pointer;
+  text-decoration: underline !important;
+}
+
 p {
   margin-top: 10px;
   font-size: 18px;
