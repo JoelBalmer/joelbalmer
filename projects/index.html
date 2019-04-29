@@ -17,23 +17,47 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <link href="./../css/fonts/montserrat/stylesheet.css" rel="stylesheet" type="text/css" />
   <link href="./../css/index.css" rel="stylesheet" />
-  <script src="./../js/projects.js" type="text/javascript"></script>
+  <link href="./project-card.css" rel="stylesheet" />
+  <script src="./projects.js" type="text/javascript"></script>
 
   <title>Projects</title>
 </head>
 
 <body style="overflow: scroll;">
   <div id="container">
-    <h1>
-      <a nohref id="origin" onclick="window.location.href = window.location.origin">Joel Balmer</a>
-    </h1>
-    <div id="body">
-      <h5>Projects</h5>
-      <p id="contributions-list">
-        Here is an example of my contributions. This simple add on built for Google Slides will update all the text in your
-        presentation to the colour of your
-        choice, saving you the effort of individually updating the text in your slides!
-      </p>
+    <div class="header">
+      <h1>
+        <a nohref id="origin" onclick="window.location.href = window.location.origin">Joel Balmer</a>
+      </h1>
+      <ul>
+        <li><a href="http://www.joelbalmermusic.co.uk/">Creative</a></li>
+        <li><a href="https://github.com/joelbalmer">Developer</a></li>
+        <li><a href="https://www.instagram.com/allotmental_health/">Mindful</a></li>
+      </ul>
+      <h3>Projects</h3>
+
+    <div id="cards-container">      
+      <div class="card flex-fill">
+        <h5 class="title">Sleep diary</h5>
+        <img class="img-top" alt="cardImgAlt" src="https://raw.githubusercontent.com/JoelBalmer/change-document-text-color/master/screenshot.jpg" >
+        <div class="body d-flex flex-column flex-fill">
+          <p class="text flex-fill">
+            Welcome to sleep diary! Simply enter your sleep diary information, and we'll calculate everything for you!
+          </p>
+          <a class="project-link" href="https://www.google.com/" class="align-self-start">Click here to see</a>
+        </div>
+      </div>
+
+      <div class="card flex-fill">
+        <h5 class="title">Sleep diary</h5>
+        <img class="img-top" alt="cardImgAlt" src="https://raw.githubusercontent.com/JoelBalmer/change-document-text-color/master/screenshot.jpg" >
+        <div class="body d-flex flex-column flex-fill">
+          <p class="text flex-fill">
+            Welcome to sleep diary! Simply enter your sleep diary information, and we'll calculate everything for you!
+          </p>
+          <a class="project-link" href="https://www.google.com/" class="align-self-start">Click here to see</a>
+        </div>
+      </div>
     </div>
   </div>
 </body>

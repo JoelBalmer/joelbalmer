@@ -20,6 +20,9 @@ body {
 
 #title {
   position: absolute;
+}
+
+#title, .header {
   width: 100%;
   text-align: center;
 }
