@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
     fetch('https://api.github.com/users/joelbalmer/repos')
         .then(res => {
             return res.json();
@@ -8,11 +8,11 @@ window.addEventListener('DOMContentLoaded', function() {
         })
 });
 
-function capitalise(string) {
+capitalise = string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function setRepos(json) {
+setRepos = json => {
     const repos = json
     .sort((a, b) => {
         return new Date(b.crated_at)- new Date(a.created_at);

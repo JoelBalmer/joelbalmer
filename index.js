@@ -1,6 +1,6 @@
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", () => {
   // hide overlay if previous visitor
-  var overlay = document.getElementById("info-overlay");
+  const overlay = document.getElementById("info-overlay");
   document.cookie.split(";").filter(cookie => {
     if (cookie.includes("overlay=hidden")) {
       overlay.hidden = true;
@@ -13,42 +13,42 @@ window.addEventListener("DOMContentLoaded", function() {
   });
 
   // setup the babylon.js scene
-  var canvas = document.getElementById("renderCanvas");
-  var engine = new BABYLON.Engine(canvas, true);
-  var scene = createScene(engine, canvas);
+  const canvas = document.getElementById("renderCanvas");
+  const engine = new BABYLON.Engine(canvas, true);
+  const scene = createScene(engine, canvas);
 
   // setup animation variables
-  var cubePosition = 0;
+  let cubePosition = 0;
   window.shouldAnimate = 1;
 
 
   scene.defaultCursor = "pointer";
   scene.internalMesh = scene.getMeshByName("box");
-  scene.registerBeforeRender(function() {
+  scene.registerBeforeRender(() => {
     scene.internalMesh.rotation.y = cubePosition += (shouldAnimate * 0.002);
   });
 
-  engine.runRenderLoop(function() {
+  engine.runRenderLoop(() => {
     if (scene.isReady()) {
       scene.render();
       engine.hideLoadingUI();
     }
   });
 
-  window.addEventListener("resize", function() {
+  window.addEventListener("resize", () => {
     engine.resize();
   });
 
   // detect whether point click or drag has been made
-  var deltaX
-  var deltaY;
+  let deltaX;
+  let deltaY;
 
-  function onPointerDown() {
+  onPointerDown = () => {
     deltaX = scene.pointerX;
     deltaY = scene.pointerY;
   }
 
-  function onPointerUp() {
+  onPointerUp = () => {
     if (
       Math.abs(scene.pointerX - deltaX) < 2 ||
       Math.abs(scene.pointerY - deltaY) < 2
@@ -68,9 +68,9 @@ window.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("click", printMousePos);
 });
 
-var removeOverlay = function() {
+var removeOverlay = () => {
   // hide overlay animation
-  var overlay = document.getElementById("info-overlay");
+  const overlay = document.getElementById("info-overlay");
   overlay.classList.add("hidden");
 
   // set overlay cookie
@@ -78,23 +78,23 @@ var removeOverlay = function() {
   document.cookie = "overlay=hidden; expires=" + date.toUTCString();
 };
 
-function printMousePos(event) {
+printMousePos = event => {
   let circle = document.getElementById("circle-click");
   circle.style.left = event.clientX - 10 + "px";
   circle.style.top = event.clientY - 10 + "px";
   
   // Continue fade animation
   circle.classList.add("fade-in-out");
-  circle.addEventListener("animationend", function () {
+  circle.addEventListener("animationend", () => {
     circle.classList.remove("fade-in-out");
   });
-  circle.addEventListener("webkitAnimationEnd", function(){
+  circle.addEventListener("webkitAnimationEnd", () => {
     circle.classList.remove("fade-in-out");
   });
 
 }
 
-var clickOutcome = function(pickResult) {
+const clickOutcome = pickResult => {
   if (!pickResult.hit) {
     return;
   }
@@ -107,8 +107,8 @@ var clickOutcome = function(pickResult) {
 
   // 16 top cv, 8 left github, 0 right music
   // 12 Right 2 is music, 4 rgiht 3 is my cv, 20 bottom is github
-  var indices = pickResult.pickedMesh.getIndices();
-  var firstVertex = indices[pickResult.faceId * 3];
+  const indices = pickResult.pickedMesh.getIndices();
+  const firstVertex = indices[pickResult.faceId * 3];
   switch (firstVertex) {
     case 16:
       sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
@@ -133,7 +133,7 @@ var clickOutcome = function(pickResult) {
   }
 };
 
-var sendGtagEvent = function(goalName, url) {
+const sendGtagEvent = (goalName, url) => {
   gtag("event", "Click", {
     event_category: "Cube",
     event_label: goalName,
@@ -142,13 +142,13 @@ var sendGtagEvent = function(goalName, url) {
   document.location.href = url;
 };
 
-var createScene = function(engine, canvas) {
+const createScene = (engine, canvas) => {
   // create the scene space
-  var scene = new BABYLON.Scene(engine);
+  let scene = new BABYLON.Scene(engine);
   scene.clearColor = new BABYLON.Color3(1, 1, 1);
 
   // add a camera to the scene and attach it to the canvas
-  var camera = new BABYLON.ArcRotateCamera(
+  let camera = new BABYLON.ArcRotateCamera(
     "Camera",
     Math.PI / 4,
     Math.PI / 3,
@@ -159,12 +159,12 @@ var createScene = function(engine, canvas) {
   camera.attachControl(canvas, true);
 
   // add lights to the scene
-  var light1 = new BABYLON.HemisphericLight(
+  const light1 = new BABYLON.HemisphericLight(
     "light1",
     new BABYLON.Vector3(1, 1, 0),
     scene
   );
-  var light2 = new BABYLON.PointLight(
+  const light2 = new BABYLON.PointLight(
     "light2",
     new BABYLON.Vector3(0, 1, -1),
     scene
@@ -174,16 +174,15 @@ var createScene = function(engine, canvas) {
   engine.displayLoadingUI();
 
   // import texture atlas, sprite sheet
-  var mat = new BABYLON.StandardMaterial("mat", scene);
-  //var texture = new BABYLON.Texture("./res/img/items.png", scene);
-  var texture = new BABYLON.Texture("./res/img/items-4.png", scene);
+  let mat = new BABYLON.StandardMaterial("mat", scene);
+  const texture = new BABYLON.Texture("./res/img/items-4.png", scene);
   mat.diffuseTexture = texture;
 
-  var columns = 4;
-  var rows = 1;
-  var faceUV = new Array(6);
+  const columns = 4;
+  const rows = 1;
+  const faceUV = new Array(6);
 
-  for (var i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) {
     faceUV[i] = new BABYLON.Vector4(
       i / columns,
       0,
@@ -192,7 +191,7 @@ var createScene = function(engine, canvas) {
     );
   }
 
-  var options = {
+  const options = {
     height: 0.35,
     width: 0.35,
     depth: 0.35,
@@ -201,7 +200,7 @@ var createScene = function(engine, canvas) {
   };
 
   // create the box and assign the material with textures to it
-  var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+  let box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
   box.material = mat;
   box.isPickable = true;
   box.actionManager = new BABYLON.ActionManager(scene);
@@ -210,7 +209,7 @@ var createScene = function(engine, canvas) {
   box.actionManager.registerAction(
     new BABYLON.ExecuteCodeAction(
       BABYLON.ActionManager.OnPointerOverTrigger,
-      function(ev) {
+      (ev) => {
         box.material.emissiveColor = BABYLON.Color3.Red();
       }
     )
@@ -220,13 +219,13 @@ var createScene = function(engine, canvas) {
   box.actionManager.registerAction(
     new BABYLON.ExecuteCodeAction(
       BABYLON.ActionManager.OnPointerOutTrigger,
-      function(ev) {
+      (ev) => {
         box.material.emissiveColor = BABYLON.Color3.Black();
       }
     )
   );
 
-  scene.registerAfterRender(function() {
+  scene.registerAfterRender(() => {
     if (canvas.style.cursor === "pointer") {
       canvas.style.cursor = "grab";
     }
