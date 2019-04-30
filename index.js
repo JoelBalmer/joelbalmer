@@ -120,10 +120,10 @@ var clickOutcome = function(pickResult) {
       sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
       break;
     case 4:
-      sendGtagEvent("CV", "./res/CV.pdf");
+      sendGtagEvent("CV", "./res/files/CV.pdf");
       break;
     case 20:
-      sendGtagEvent("CV", "./res/CV.pdf");
+      sendGtagEvent("CV", "./res/files/CV.pdf");
       break;
     case 12:
       sendGtagEvent("Garden", "https://www.instagram.com/allotmental_health/");
@@ -175,8 +175,8 @@ var createScene = function(engine, canvas) {
 
   // import texture atlas, sprite sheet
   var mat = new BABYLON.StandardMaterial("mat", scene);
-  //var texture = new BABYLON.Texture("./img/items.png", scene);
-  var texture = new BABYLON.Texture("./img/items-4.png", scene);
+  //var texture = new BABYLON.Texture("./res/img/items.png", scene);
+  var texture = new BABYLON.Texture("./res/img/items-4.png", scene);
   mat.diffuseTexture = texture;
 
   var columns = 4;
