@@ -10,33 +10,40 @@
   width: 50%;
   margin: 0 auto;
   width: min-content;
+  min-width: 300px;
+  height: fit-content;
   padding: 16px;
   background: linear-gradient(rgba(182, 182, 182, 0.5), white);
 }
 
 h5 {
   text-transform: none;
+  font-size: 25px;
 }
 
 h5, .img-top {
-  margin: 0px;
+  margin: 5px 0px;
 }
 
 .img-top {
   height: fit-content;
   width: fit-content;
-  margin: 10px 0px;
+  margin: 15px 0px;
   align-self: center;
 }
 
 .body {
   display: flex;
-  text-align: left;
+}
+
+.card-link {
+  font-size: 20px;
 }
 
 .body > .text {
     margin: 10px 0px;
-    font-size: 16px;
+    font-size: 12px;
+    text-transform: none;
 }
 
 .show {
