@@ -32,7 +32,7 @@ h1 {
   margin-top: 60px;
 }
 
-h1 > a:hover {
+a:hover {
   cursor: pointer;
   text-decoration: underline !important;
 }
@@ -62,7 +62,7 @@ ul > li:last-child {
   border-right: none;
 }
 
-li > a, li > a:hover {
+a, a:hover {
   color: #212529;
 }
 

@@ -1,5 +1,6 @@
 #cards-container {
     display: flex;
+    margin: 30px;
 }
 
 .card {
@@ -14,23 +15,28 @@
 }
 
 h5 {
-    margin: 0px;
+  text-transform: none;
+}
+
+h5, .img-top {
+  margin: 0px;
 }
 
 .img-top {
-  height: 100%;
-  max-height: 200px;
-  min-height: 200px;
+  height: fit-content;
+  width: fit-content;
   margin: 10px 0px;
+  align-self: center;
 }
 
-div.body > p.text {
+.body {
+  display: flex;
+  text-align: left;
+}
+
+.body > .text {
     margin: 10px 0px;
     font-size: 16px;
-}
-
-.project-link, .project-link:hover {
-    color: black;
 }
 
 .show {

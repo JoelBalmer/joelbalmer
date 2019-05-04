@@ -8,21 +8,54 @@ window.addEventListener('DOMContentLoaded', () => {
         })
 });
 
-capitalise = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 setRepos = json => {
     const repos = json
-    .sort((a, b) => {
-        return new Date(b.crated_at)- new Date(a.created_at);
-    })
-    .filter(repo => repo.fork)
-    .map(repo => {
-        const name = repo.name.split('-').join(' ');
-        return capitalise(name);
-    })
-    .forEach((str, i) => {
-        console.log('Project ' + i + ': ' + str);
-    });
+        .sort((a, b) => {
+            return new Date(b.pushed_at) - new Date(a.pushed_at);
+        })
+        .filter(repo => {
+            return repo.fork;
+        });
+
+    const card = createCard(repos[0]);
+}
+
+formatTitle = string => {
+    const name = string.split('-').join(' ');
+    return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+createCard = repo => {
+    // Create html elements and classes
+    let divCard = document.createElement('div');
+    divCard.classList.add('card', 'flex-fill');
+    let h5 = document.createElement('h5');
+    h5.classList.add('title');
+    let img = document.createElement('img');
+    img.classList.add('img-top');
+    let divBody = document.createElement('div');
+    divBody.classList.add('body', 'flex-fill', 'flex-column');
+    let p = document.createElement('p');
+    p.classList.add('text', 'flex-fill');
+    let a = document.createElement('a');
+    a.classList.add('card-link');
+
+    // Set values from repo
+    h5.innerHTML = formatTitle(repo.name);
+    img.src = `https://raw.githubusercontent.com/${repo.full_name}/master/resources/icon.png`;
+    p.innerHTML = repo.description;  
+    a.innerHTML = "See project";
+    a.href = repo.html_url;
+
+    // Arrange
+    divCard.appendChild(h5);
+    divCard.appendChild(img);
+    divCard.appendChild(divBody);
+    divBody.appendChild(p);
+    divBody.appendChild(a);
+
+    // Return
+    let container = document.getElementById('cards-container');
+    container.appendChild(divCard);
+    return container;
 }
