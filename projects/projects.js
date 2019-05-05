@@ -9,23 +9,20 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 setRepos = json => {
+    let container = document.getElementById('cards-container');
+
     // All repos
     const repos = json
         .sort((a, b) => {
-            return new Date(b.pushed_at) - new Date(a.pushed_at);
+            return new Date(a.pushed_at) - new Date(b.pushed_at);
         });
-    
+
     // Just forks
     const forks = repos.filter(repo => repo.fork);
-    const card1 = createCard(forks[0]);
-    const card2 = createCard(forks[1]);
-    const card3 = createCard(forks[2]);
-
-    // Add to html
-    let container = document.getElementById('cards-container');
-    container.appendChild(card3);
-    container.appendChild(card2);
-    container.appendChild(card1);
+    forks.forEach(fork => {
+        const card = createCard(fork);
+        container.appendChild(card);
+    });
 }
 
 formatTitle = string => {
@@ -50,8 +47,8 @@ createCard = repo => {
 
     // Set values from repo
     h5.innerHTML = formatTitle(repo.name);
-    img.src = `https://raw.githubusercontent.com/${repo.full_name}/master/project-image.png`;
-    p.innerHTML = repo.description;  
+    const imgSrc = `https://raw.githubusercontent.com/${repo.full_name}/master/project-image.png`;
+    p.innerHTML = repo.description;
     a.innerHTML = "See project";
     a.href = repo.html_url;
 
