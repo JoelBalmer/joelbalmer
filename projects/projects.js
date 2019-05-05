@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    let a;
+    let a = document.getElementById('personal');
     let repoType = 'personal';
 
     // Set tab
@@ -21,8 +21,11 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 setRepos = (json, repoType) => {
+    let isPersonal = true;
     let container = document.getElementById('cards-container');
-    const isPersonal = repoType === 'personal' ? true : false;
+    if (repoType) {
+        isPersonal = repoType === 'personal' ? true : false;
+    }
 
     // All repos
     const repos = json
