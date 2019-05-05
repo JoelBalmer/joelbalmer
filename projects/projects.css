@@ -17,10 +17,6 @@
   float: left;
 }
 
-.card:nth-child(3n+1) {
-  clear: left;
-}
-
 h5 {
   text-transform: none;
   font-size: 25px;
@@ -79,4 +75,22 @@ h5, .img-top {
 @-webkit-keyframes fadeout {
   from { opacity: 1; }
   to { opacity: 0; }
+}
+
+@media only screen and (max-width: 786px) {
+  .card:nth-child(1n+1) {
+    clear: left;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .card:nth-child(2n+1) {
+    clear: left;
+  }
+}
+
+@media only screen and (min-width: 1140px) {
+  .card:nth-child(3n+1) {
+    clear: left;
+  }
 }

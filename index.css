@@ -27,6 +27,11 @@ body {
   text-align: center;
 }
 
+.page-content {
+  width: 100%;
+  text-align: center;
+}
+
 h1 {
   margin: 0px;
   margin-top: 60px;
