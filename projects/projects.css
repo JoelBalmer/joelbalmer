@@ -1,5 +1,5 @@
 #cards-container {
-    display: flex;
+    display: inline-block;
     margin: 30px;
 }
 
@@ -8,12 +8,17 @@
   border-radius: 8px;
   box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
   width: 50%;
-  margin: 0 auto;
+  margin: 10px;
   width: min-content;
   min-width: 300px;
   height: fit-content;
   padding: 16px;
   background: linear-gradient(rgba(182, 182, 182, 0.5), white);
+  float: left;
+}
+
+.card:nth-child(3n+1) {
+  clear: left;
 }
 
 h5 {
