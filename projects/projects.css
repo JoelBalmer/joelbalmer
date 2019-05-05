@@ -1,6 +1,14 @@
+#projects-menu {
+  font-size: 20px;
+}
+
+#projects-menu a.active {
+  text-decoration: underline;
+}
+
 #cards-container {
     display: inline-block;
-    margin: 30px;
+    margin: 5px 30px;
 }
 
 .card {
@@ -15,6 +23,10 @@
   padding: 16px;
   background: linear-gradient(rgba(182, 182, 182, 0.5), white);
   float: left;
+}
+
+h3 {
+  margin: 0px;
 }
 
 h5 {

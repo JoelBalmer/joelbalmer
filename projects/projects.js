@@ -1,26 +1,47 @@
 window.addEventListener('DOMContentLoaded', () => {
+    let a;
+    let repoType = 'personal';
+
+    // Set tab
+    const urlParams = new URLSearchParams (window.location.search);
+    repoType = urlParams.get('tab');
+    if (repoType) {
+        a = document.getElementById(repoType);
+    }
+    a.classList.add('active');
+
+    // Fetch repos
     fetch('https://api.github.com/users/joelbalmer/repos')
         .then(res => {
             return res.json();
         })
         .then(json => {
-            setRepos(json);
+            setRepos(json, repoType);
         })
 });
 
-setRepos = json => {
+setRepos = (json, repoType) => {
     let container = document.getElementById('cards-container');
+    const isPersonal = repoType === 'personal' ? true : false;
 
     // All repos
     const repos = json
         .sort((a, b) => {
-            return new Date(a.pushed_at) - new Date(b.pushed_at);
+            let date1;
+            let date2;
+            if (isPersonal) {
+                date1 = new Date(b.pushed_at);
+                date2 = new Date(a.pushed_at);
+            } else {
+                date1 = new Date(a.pushed_at);
+                date2 = new Date(b.pushed_at);
+            }
+            return date1 - date2;
         });
 
-    // Just forks
-    const forks = repos.filter(repo => repo.fork);
-    forks.forEach(fork => {
-        const card = createCard(fork);
+    const projects = repos.filter(repo => repo.fork !== isPersonal);
+    projects.forEach(project => {
+        const card = createCard(project);
         container.appendChild(card);
     });
 }
@@ -60,4 +81,12 @@ createCard = repo => {
     divBody.appendChild(a);
 
     return divCard;
+}
+
+const tabClick = (event) => {
+    const params = new URLSearchParams (window.location.search);
+    params.set('tab', event.id);
+    const loc = window.location;
+    const url = `${loc.origin}${loc.pathname}?${params.toString()}`;
+    window.location.href = url;
 }
