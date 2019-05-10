@@ -1,15 +1,25 @@
+import { printMousePos } from './utils/circle-click.js';
+
 window.addEventListener("DOMContentLoaded", () => {
+
   // hide overlay if previous visitor
   const overlay = document.getElementById("info-overlay");
+  const title = document.getElementById ('title');
+
   document.cookie.split(";").filter(cookie => {
-    if (cookie.includes("overlay=hidden")) {
-      overlay.hidden = true;
-    } else {
-      overlay.addEventListener("click", removeOverlay);
-      overlay.addEventListener("mouseup", removeOverlay);
-      overlay.addEventListener("pointerup", removeOverlay);
-      overlay.addEventListener("touchend", removeOverlay);
+    if (cookie.includes('overlay')) {
+      if (cookie.includes ('overlay=hidden')) {
+        overlay.hidden = true;
+      } else {
+        overlay.hidden = false;
+        overlay.addEventListener ('click', removeOverlay);
+        overlay.addEventListener ('mouseup', removeOverlay);
+        overlay.addEventListener ('pointerup', removeOverlay);
+        overlay.addEventListener ('touchend', removeOverlay);
+      }
     }
+
+    title.hidden = false;
   });
 
   // setup the babylon.js scene
@@ -20,7 +30,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // setup animation variables
   let cubePosition = 0;
   window.shouldAnimate = 1;
-
 
   scene.defaultCursor = "pointer";
   scene.internalMesh = scene.getMeshByName("box");
@@ -43,12 +52,12 @@ window.addEventListener("DOMContentLoaded", () => {
   let deltaX;
   let deltaY;
 
-  onPointerDown = () => {
+  const onPointerDown = () => {
     deltaX = scene.pointerX;
     deltaY = scene.pointerY;
   }
 
-  onPointerUp = () => {
+  const onPointerUp = () => {
     if (
       Math.abs(scene.pointerX - deltaX) < 2 ||
       Math.abs(scene.pointerY - deltaY) < 2
@@ -64,7 +73,6 @@ window.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("mouseup", onPointerUp);
   window.addEventListener("pointerup", onPointerUp);
   window.addEventListener("touchend", onPointerUp);
-
   window.addEventListener("click", printMousePos);
 });
 
@@ -77,22 +85,6 @@ var removeOverlay = () => {
   let date = new Date("December 17, 2028");
   document.cookie = "overlay=hidden; expires=" + date.toUTCString();
 };
-
-printMousePos = event => {
-  let circle = document.getElementById("circle-click");
-  circle.style.left = event.clientX - 10 + "px";
-  circle.style.top = event.clientY - 10 + "px";
-  
-  // Continue fade animation
-  circle.classList.add("fade-in-out");
-  circle.addEventListener("animationend", () => {
-    circle.classList.remove("fade-in-out");
-  });
-  circle.addEventListener("webkitAnimationEnd", () => {
-    circle.classList.remove("fade-in-out");
-  });
-
-}
 
 const clickOutcome = pickResult => {
   if (!pickResult.hit) {
