@@ -20,10 +20,14 @@ window.addEventListener('DOMContentLoaded', () => {
         })
         .then(json => {
             setRepos(json, repoType);
+
+            // Animate hr tag
+            const hr = document.getElementsByTagName('hr')[0];
+            hr.classList.add('expand-animate');
         });
 
     // Setup events
-    window.addEventListener ('click', printMousePos);
+    window.addEventListener('click', printMousePos);
 });
 
 const setRepos = (json, repoType) => {
