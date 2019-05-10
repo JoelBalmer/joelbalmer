@@ -21,9 +21,12 @@ window.addEventListener('DOMContentLoaded', () => {
         .then(json => {
             setRepos(json, repoType);
 
-            // Animate hr tag
-            const hr = document.getElementsByTagName('hr')[0];
-            hr.classList.add('expand-animate');
+            // Animate elements
+            let hr = document.getElementsByTagName('hr')[0];
+            hr.classList.add('animate-width', 'animate-fadein');
+
+            let container = document.getElementById('cards-container');
+            container.classList.add('animate-fadein');
         });
 
     // Setup events
@@ -33,6 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 const setRepos = (json, repoType) => {
     let isPersonal = true;
     let container = document.getElementById('cards-container');
+
     if (repoType) {
         isPersonal = repoType === 'personal' ? true : false;
     }
