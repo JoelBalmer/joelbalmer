@@ -48,8 +48,10 @@ p {
 }
 
 hr {
-  margin: 10px 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: solid black 1px;
+  width: 70%;
 }
 
 ul {
