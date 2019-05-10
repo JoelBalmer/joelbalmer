@@ -7,8 +7,10 @@
 }
 
 #cards-container {
-    display: inline-block;
-    margin: 5px 30px;
+  display: inline-block;
+  margin: 5px 30px;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 .card {
@@ -59,7 +61,7 @@ h5, .img-top {
     text-transform: none;
 }
 
-.show {
+/* .show {
   -webkit-animation: fadein 0.2s linear forwards;
   animation: fadein 0.2s linear forwards;
 }
@@ -87,7 +89,7 @@ h5, .img-top {
 @-webkit-keyframes fadeout {
   from { opacity: 1; }
   to { opacity: 0; }
-}
+} */
 
 @media only screen and (max-width: 786px) {
   .card:nth-child(1n+1) {
