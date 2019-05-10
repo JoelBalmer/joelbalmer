@@ -1,8 +1,11 @@
+import { printMousePos } from './../utils/circle-click.js';
+
 window.addEventListener('DOMContentLoaded', () => {
-    let a = document.getElementById('personal');
+
+    // Set the correct tab
+    let a = document.getElementById ('personal');
     let repoType = 'personal';
 
-    // Set tab
     const urlParams = new URLSearchParams (window.location.search);
     repoType = urlParams.get('tab');
     if (repoType) {
@@ -17,10 +20,13 @@ window.addEventListener('DOMContentLoaded', () => {
         })
         .then(json => {
             setRepos(json, repoType);
-        })
+        });
+
+    // Setup events
+    window.addEventListener ('click', printMousePos);
 });
 
-setRepos = (json, repoType) => {
+const setRepos = (json, repoType) => {
     let isPersonal = true;
     let container = document.getElementById('cards-container');
     if (repoType) {
@@ -49,12 +55,12 @@ setRepos = (json, repoType) => {
     });
 }
 
-formatTitle = string => {
+const formatTitle = string => {
     const name = string.split('-').join(' ');
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
-createCard = repo => {
+const createCard = repo => {
     // Create html elements and classes
     let divCard = document.createElement('div');
     divCard.classList.add('card', 'flex-fill');
