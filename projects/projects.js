@@ -92,7 +92,7 @@ const createCard = repo => {
     return divCard;
 }
 
-const tabClick = (event) => {
+window.tabClick = (event) => {
     const params = new URLSearchParams (window.location.search);
     params.set('tab', event.id);
     const loc = window.location;
