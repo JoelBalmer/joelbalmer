@@ -62,6 +62,7 @@ const setRepos = (json, repoType) => {
         items: projects.length, 
         animate: true,
         maxColumns: 3,
+        gutter: 30,
     });
 
     magicGrid.listen();
@@ -69,6 +70,7 @@ const setRepos = (json, repoType) => {
     projects.forEach(project => {
         const card = createCard(project);
         container.appendChild(card);
+        magicGrid.positionItems();
     });
 }
 
