@@ -7,7 +7,6 @@
 }
 
 #cards-container {
-  display: inline-block;
   margin: 5px 30px;
   opacity: 0;
   transition: opacity 1s ease;
@@ -17,14 +16,11 @@
   opacity: 1;
   border-radius: 8px;
   box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
-  width: 50%;
+  width: 300px; 
   margin: 10px;
-  width: min-content;
-  min-width: 300px;
   height: fit-content;
   padding: 16px;
   background: linear-gradient(rgba(182, 182, 182, 0.5), white);
-  float: left;
 }
 
 h3 {
@@ -47,10 +43,6 @@ h5, .img-top {
   align-self: center;
 }
 
-.body {
-  display: flex;
-}
-
 .card-link {
   font-size: 20px;
 }
@@ -59,52 +51,4 @@ h5, .img-top {
     margin: 10px 0px;
     font-size: 12px;
     text-transform: none;
-}
-
-/* .show {
-  -webkit-animation: fadein 0.2s linear forwards;
-  animation: fadein 0.2s linear forwards;
-}
-
-@keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@-webkit-keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.hide {
-  -webkit-animation: fadeout 0.2s linear forwards;
-  animation: fadeout 0.2s linear forwards;
-}
-
-@keyframes fadeout {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@-webkit-keyframes fadeout {
-  from { opacity: 1; }
-  to { opacity: 0; }
-} */
-
-@media only screen and (max-width: 786px) {
-  .card:nth-child(1n+1) {
-    clear: left;
-  }
-}
-
-@media only screen and (max-width: 1140px) {
-  .card:nth-child(2n+1) {
-    clear: left;
-  }
-}
-
-@media only screen and (min-width: 1140px) {
-  .card:nth-child(3n+1) {
-    clear: left;
-  }
 }
