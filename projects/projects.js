@@ -64,12 +64,12 @@ const setRepos = (json, repoType) => {
         maxColumns: 3,
     });
 
+    magicGrid.listen();
+
     projects.forEach(project => {
         const card = createCard(project);
         container.appendChild(card);
     });
-
-    magicGrid.listen();
 }
 
 const formatTitle = string => {
