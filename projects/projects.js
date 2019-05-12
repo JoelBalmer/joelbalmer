@@ -70,8 +70,9 @@ const setRepos = (json, repoType) => {
     projects.forEach(project => {
         const card = createCard(project);
         container.appendChild(card);
-        magicGrid.positionItems();
     });
+
+    magicGrid.positionItems();
 }
 
 const formatTitle = string => {
