@@ -55,12 +55,21 @@ const setRepos = (json, repoType) => {
             }
             return date1 - date2;
         });
-
     const projects = repos.filter(repo => repo.fork !== isPersonal);
+
+    let magicGrid = new MagicGrid({
+        container: "#cards-container",
+        items: projects.length, 
+        animate: true,
+        maxColumns: 3,
+    });
+
     projects.forEach(project => {
         const card = createCard(project);
         container.appendChild(card);
     });
+
+    magicGrid.listen();
 }
 
 const formatTitle = string => {
