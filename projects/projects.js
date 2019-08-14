@@ -1,5 +1,8 @@
 import { printMousePos } from './../utils/circle-click.js';
 
+// Global reference to wait for async img loading
+let magicGrid;
+
 window.addEventListener('DOMContentLoaded', () => {
 
     // Set the correct tab
@@ -57,21 +60,20 @@ const setRepos = (json, repoType) => {
         });
     const projects = repos.filter(repo => repo.fork !== isPersonal);
 
-    let magicGrid = new MagicGrid({
-        container: "#cards-container",
-        items: projects.length, 
-        animate: true,
-        maxColumns: 3,
-        gutter: 30,
-    });
-
-    magicGrid.listen();
-
     projects.forEach(project => {
         const card = createCard(project);
         container.appendChild(card);
     });
 
+    magicGrid = new MagicGrid({
+        container: "#cards-container",
+        items: projects.length,
+        animate: true,
+        maxColumns: 3,
+        gutter: 30
+    });
+
+    magicGrid.listen();
     magicGrid.positionItems();
 }
 
@@ -86,7 +88,7 @@ const createCard = repo => {
     divCard.classList.add('card', 'flex-fill');
     let h5 = document.createElement('h5');
     h5.classList.add('title');
-    let img = document.createElement('img');
+    let img = new Image;
     img.classList.add('img-top');
     let divBody = document.createElement('div');
     divBody.classList.add('body', 'flex-fill', 'flex-column');
@@ -97,6 +99,9 @@ const createCard = repo => {
 
     // Set values from repo
     h5.innerHTML = formatTitle(repo.name);
+    img.addEventListener("load", () => {
+        magicGrid.positionItems();
+    });
     img.src = `https://raw.githubusercontent.com/${repo.full_name}/master/project-image.png`;
     p.innerHTML = repo.description;
     a.innerHTML = "See project";
