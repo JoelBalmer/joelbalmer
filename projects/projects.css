@@ -39,7 +39,8 @@ h5, .img-top {
 .img-top {
   height: fit-content;
   width: fit-content;
-  margin: 15px 0px;
+  min-height: 50px;
+  min-width: 50px;
   align-self: center;
 }
 
