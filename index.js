@@ -112,10 +112,10 @@ const clickOutcome = pickResult => {
       sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
       break;
     case 4:
-      sendGtagEvent("CV", "./res/files/CV.pdf");
+      sendGtagEvent("CV", "./res/CV.pdf");
       break;
     case 20:
-      sendGtagEvent("CV", "./res/files/CV.pdf");
+      sendGtagEvent("CV", "./res/CV.pdf");
       break;
     case 12:
       sendGtagEvent("Garden", "https://www.instagram.com/allotmental_health/");
