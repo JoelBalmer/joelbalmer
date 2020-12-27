@@ -106,7 +106,7 @@ const clickOutcome = pickResult => {
       sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
       break;
     case 8:
-      sendGtagEvent("Github", "https://github.com/joelbalmer");
+      sendGtagEvent("Github", "./projects");
       break;
     case 0:
       sendGtagEvent("Music", "http://www.joelbalmermusic.co.uk/");
