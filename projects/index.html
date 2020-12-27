@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120580481-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-120580481-1');
+  </script>
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <script src="https://unpkg.com/magic-grid/dist/magic-grid.min.js"></script>
+  <link href="./../res/fonts/montserrat/stylesheet.css" rel="stylesheet" type="text/css" />
+  <link href="./../index.css" rel="stylesheet" />
+  <link href="./projects.css" rel="stylesheet" />
+  <script src="./projects.js" type="module"></script>
+
+  <title>Projects</title>
+</head>
+
+<body style="overflow: scroll;">
+  <div id="container">
+    <div class="header">
+      <h1>
+        <a nohref id="origin" onclick="window.location.href = window.location.origin">Joel Balmer</a>
+      </h1>
+      <ul>
+        <li><a href="http://www.joelbalmermusic.co.uk/">Creative</a></li>
+        <li><a href="https://github.com/joelbalmer">Developer</a></li>
+        <li><a href="https://www.instagram.com/allotmental_health/">Mindful</a></li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <div class="page-content">
+      <h3>Projects</h3>
+      <div class="menu-container">
+        <ul id="projects-menu">
+          <li><a id="personal" nohref onclick="tabClick(this)">Personal</a></li>
+          <li><a id="contributions" nohref onclick="tabClick(this)">Contributions</a></li>
+        </ul>
+      </div>
+      <div id="cards-container">
+      </div>
+    </div>
+  </div>
+  
+  <div id="circle-click"></div>
+</body>
+
+</html>

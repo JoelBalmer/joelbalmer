@@ -1,0 +1,55 @@
+#projects-menu {
+  font-size: 20px;
+}
+
+#projects-menu a.active {
+  text-decoration: underline;
+}
+
+#cards-container {
+  margin: 5px 30px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.card {
+  opacity: 1;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+  width: 300px; 
+  margin: 10px;
+  height: fit-content;
+  padding: 16px;
+  background: linear-gradient(rgba(182, 182, 182, 0.5), white);
+}
+
+h3 {
+  margin: 0px;
+}
+
+h5 {
+  text-transform: none;
+  font-size: 25px;
+}
+
+h5, .img-top {
+  margin: 5px 0px;
+}
+
+.img-top {
+  height: fit-content;
+  width: fit-content;
+  min-height: 50px;
+  min-width: 50px;
+  align-self: center;
+}
+
+.card-link {
+  font-size: 20px;
+}
+
+.body > .text {
+    margin: 10px 0px;
+    font-size: 12px;
+    text-transform: none;
+}
