@@ -1,0 +1,15 @@
+.link-items {
+  text-align: left;
+}
+
+.card {
+  opacity: 1;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 0 rgb(0 0 0 / 50%);
+  width: 300px;
+  margin: 10px;
+  height: fit-content;
+  padding: 16px;
+  background: linear-gradient(rgba(182, 182, 182, 0.5), white);
+  text-align: center;
+}
