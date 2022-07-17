@@ -84,6 +84,11 @@ const formatTitle = string => {
 
 const createCard = repo => {
     // Create html elements and classes
+    let linkWrapperDiv = document.createElement('div');
+    linkWrapperDiv.classList.add('link-wrapper');
+    let repoLink = document.createElement('a');
+    repoLink.href = repo.html_url;
+    repoLink.target = "_blank";
     let divCard = document.createElement('div');
     divCard.classList.add('card', 'flex-fill');
     let h5 = document.createElement('h5');
@@ -94,8 +99,6 @@ const createCard = repo => {
     divBody.classList.add('body', 'flex-fill', 'flex-column');
     let p = document.createElement('p');
     p.classList.add('text', 'flex-fill');
-    let a = document.createElement('a');
-    a.classList.add('card-link');
 
     // Set values from repo
     h5.innerHTML = formatTitle(repo.name);
@@ -104,17 +107,16 @@ const createCard = repo => {
     });
     img.src = `https://raw.githubusercontent.com/${repo.full_name}/master/project-image.png`;
     p.innerHTML = repo.description;
-    a.innerHTML = "See project";
-    a.href = repo.html_url;
 
     // Arrange and return
+    linkWrapperDiv.appendChild(repoLink);
+    repoLink.appendChild(divCard);
     divCard.appendChild(h5);
     divCard.appendChild(img);
     divCard.appendChild(divBody);
     divBody.appendChild(p);
-    divBody.appendChild(a);
 
-    return divCard;
+    return linkWrapperDiv;
 }
 
 window.tabClick = (event) => {
