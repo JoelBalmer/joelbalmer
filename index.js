@@ -225,7 +225,3 @@ const createScene = (engine, canvas) => {
 
   return scene;
 };
-
-const titleClick = () => {
-  window.location.href = window.location.origin;
-}
