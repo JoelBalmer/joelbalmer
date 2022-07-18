@@ -30,7 +30,7 @@ h3 {
 
 h5 {
   text-transform: none;
-  font-size: 25px;
+  font-size: 32px;
 }
 
 h5, .img-top {
@@ -51,6 +51,6 @@ h5, .img-top {
 
 .body > .text {
     margin: 10px 0px;
-    font-size: 12px;
+    font-size: 20px;
     text-transform: none;
 }
