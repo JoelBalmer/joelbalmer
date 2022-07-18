@@ -6,7 +6,8 @@
   text-decoration: underline;
 }
 
-#cards-container {
+#cards-container,
+#links-container {
   margin: 5px 30px;
   opacity: 0;
   transition: opacity 1s ease;
