@@ -2,7 +2,8 @@ window.addEventListener('DOMContentLoaded', () => {
   let magicGrid = new MagicGrid({
     container: "#links-container",
     static: true,
-    animate: true
+    animate: true,
+    maxColumns: 3
   });
 
   magicGrid.listen();
