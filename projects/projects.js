@@ -42,6 +42,50 @@ const setRepos = (json, repoType) => {
 
     if (repoType) {
         isPersonal = repoType === 'personal' ? true : false;
+
+        if (repoType === 'experiments') {
+            const projects = [
+                {
+                    name: 'SprintBet',
+                    full_name: 'SprintBet',
+                    description: 'Realtime voting app for planning poker',
+                    html_url: 'https://sprintbet.dev',
+                    imgSrc: '/res/img/sprintbet.png'
+                },
+                {
+                    name: 'Rachel Skea Portfolio',
+                    full_name: 'Rachel Skea Portfolio',
+                    description: 'Website for the talented Rachel Skea, built with Next.js and Contentful CMS',
+                    html_url: 'https://rach-frontend.vercel.app',
+                    imgSrc: '/res/img/rach.png'
+                },
+                {
+                    name: 'Projects timeline',
+                    full_name: 'Projects timeline',
+                    description: 'Interactable timeline entries, using latest angular version',
+                    html_url: 'https://timeline.experiments.joelbalmer.me',
+                    imgSrc: '/res/img/timeline-sm.png'
+                }
+            ];
+            
+            projects.forEach(project => {
+                const card = createCard(project);
+                container.appendChild(card);
+            });
+        
+            magicGrid = new MagicGrid({
+                container: "#cards-container",
+                items: projects.length,
+                animate: true,
+                maxColumns: 3,
+                gutter: 30
+            });
+        
+            magicGrid.listen();
+            magicGrid.positionItems();
+
+            return;
+        }
     }
 
     // All repos
@@ -105,7 +149,7 @@ const createCard = repo => {
     img.addEventListener("load", () => {
         magicGrid.positionItems();
     });
-    img.src = `https://raw.githubusercontent.com/${repo.full_name}/master/project-image.png`;
+    img.src = repo.imgSrc || `https://raw.githubusercontent.com/${repo.full_name}/master/project-image.png`;
     p.innerHTML = repo.description;
 
     // Arrange and return
